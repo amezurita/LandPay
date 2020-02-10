@@ -1,0 +1,35 @@
+<h1 style="font-size: 2.5rem;">Profile</h1>
+<br>
+<h2 style="font-size: 1.5rem;">Here you can find all your properties</h2>
+<br><br>
+<section class="home__section">
+  {{#each places as |place|}}
+  
+
+<div class="card" style="width: 360px; margin: 10px;">
+  <div class="card-content">
+    <p class="title">
+      {{name}}
+    </p>
+    <p class="subtitle">
+      {{location.address}}
+    </p>
+  </div>
+  <footer class="card-footer">
+    <p class="card-footer-item">
+      <span>
+        <a href="/places/{{_id}}">View More and Update</a>
+      </span>
+    </p>
+  </footer>
+</div>
+
+
+
+  {{/each}}
+</section>
+<br><br>
+<button onclick="location.href='/'">Home</button> 
+<br><br>
+<button onclick="location.href='/create'">Create New Place</button>
+
