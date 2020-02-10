@@ -7,7 +7,6 @@ const {createPlaceView,placesView,placePost,detailPlace,detailPlacePost,deletePl
 const {isAuthenticated,checkRole}=require("../middlewares")
 /* GET home page */
 router.get('/', (req, res, next) => {
-
   res.render('index');
 });
 router.get('/signup',signUpView);
@@ -29,14 +28,30 @@ router.get('/auth/facebook', passport.authenticate('facebook'));
   failureRedirect: '/login' }, ));
 
 
+  //Google stuff
+
+  router.get(
+    "/auth/google",
+    passport.authenticate("google", {
+      scope: [
+        "https://www.googleapis.com/auth/userinfo.profile",
+        "https://www.googleapis.com/auth/userinfo.email"
+      ]
+    })
+  );
+  router.get(
+    "/auth/google/callback",
+    passport.authenticate("google", {
+      successRedirect: "/profile",
+      failureRedirect: "/" // here you would redirect to the login page using traditional login approach
+    })
+  );
+
 
 router.get('/create',isAuthenticated,createPlaceView)
- // router.get('/create',createPlaceView)
+
 
   router.get("/logout",logout)
-  
-  
-  //router.get("/create",placesView)
   router.post("/create",placePost)
   router.get("/places",placesView)
   router.get('/places/:id', isAuthenticated, detailPlace)
