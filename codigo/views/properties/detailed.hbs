@@ -8,14 +8,15 @@
 
 
 
-
-<form class="form" action="/places/{{_id}}" method="POST">
+<form class="form" action="/places/{{_id}}" method="POST" enctype="multipart/form-data">
     <input class="input" name="name" type="text" value="{{name}}" />
-    
+    <input type="file" name="photo" value="{{photo}}">
+    <img src="{{photo}}">
       <select name="placeType" style="width: 100%;">
         <option value="{{placeType}}">{{placeType}}</option>
-        <option value="coffee shop">coffee shop</option>
-        <option value="bookstore">bookstore</option>
+        <option value="House">House</option>
+        <option value="Apartment">Apartment</option>
+        <option value="Other">Other</option>
         
       </select>
     

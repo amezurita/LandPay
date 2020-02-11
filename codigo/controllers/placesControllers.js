@@ -6,14 +6,18 @@ exports.createPlaceView=(req,res,next)=>{
 }*/
 
 exports.createPlaceView=(req,res,next)=>{
-  const options=['coffee shop','bookstore']
-  res.render("folder/create",{options})
+  const options=["House", "Apartment", "Other"]
+  const img = Places.photo
+  res.render("properties/create",{options, img})
 }
 
 exports.placePost = async (req, res) => {
-  const { name, address, latitude, longitude, placeType } = req.body
+  const { name, rent, tennants, photo, address, latitude, longitude, placeType } = req.body
   const newPlace = {
     name,
+    rent,
+    tennants,
+    photo,
     location: {
       address,
       coordinates: [longitude, latitude]
@@ -26,21 +30,24 @@ exports.placePost = async (req, res) => {
 
 exports.placesView=async (req,res)=>{
   const places=await Places.find().sort({createdAt:-1})
-  res.render("folder/places",{places})
+  res.render("properties/places",{places})
 }
 
 exports.detailPlace=async(req,res)=>{
   const {id}=req.params;
   const place=await Places.findById(id)
-  res.render("folder/detailed",place);
+  res.render("properties/detailed",place);
 }
 
 
 exports.detailPlacePost=async (req,res,next)=>{
  await console.log(req.params.id)
-  const { name, address, latitude, longitude, placeType } = req.body
+  const { name, rent, tennants, photo,  address, latitude, longitude, placeType } = req.body
   const updatePlace = {
     name,
+    rent,
+    tennants,
+    photo,
     location: {
       address,
       coordinates: [longitude, latitude]

@@ -13,7 +13,7 @@ const flash=require('connect-flash')
 const {isAuthenticated,checkRole}=require("./middlewares")
 
 mongoose
-  .connect('mongodb://localhost/LandPay', {useNewUrlParser: true, useUnifiedTopology: true})
+  .connect('mongodb://localhost/LandPay', {useNewUrlParser: true, useUnifiedTopology: true, connectTimeoutMS: 60000})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })

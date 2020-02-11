@@ -2,9 +2,15 @@
 
 
 <section class="form__section">
-  <h1 class="title">Create new Place</h1>
+  
+  <h1 class="title">Create new Property</h1>
   <form class="form" action="/create" method="POST">
-    <input class="input" name="name" type="text" placeholder="Place name" />
+    <input class="input" name="name" type="text" placeholder="Property name" />
+    <input class="input"type="number" name="rent" placeholder="Rent amount">
+    <input class="input"type="text" name="tennants" placeholder="Tennants">
+    <input class="input"type="text" name="description" placeholder="Description">
+    <img src="{{photo}}">
+    <input clas="input" type="file" name="photo" placeholder="Picture">
     <div class="select" style="width: 100%;">
       <select name="placeType" style="width: 100%;">
         <option value="">Select type</option>

@@ -1,6 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const passport = require("../config/passport")
+const Places = require("../models/places")
 
 const {signup, signUpView, login, loginView, logout} = require("../controllers/authControllers")
 const {createPlaceView,placesView,placePost,detailPlace,detailPlacePost,deletePlace}=require("../controllers/placesControllers")
@@ -42,7 +43,7 @@ router.get('/auth/facebook', passport.authenticate('facebook'));
   router.get(
     "/auth/google/callback",
     passport.authenticate("google", {
-      successRedirect: "/profile",
+      successRedirect: "/places",
       failureRedirect: "/" // here you would redirect to the login page using traditional login approach
     })
   );
