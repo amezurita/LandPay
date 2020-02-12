@@ -1,10 +1,8 @@
 const Places = require("../models/places")
 
-/*
-exports.createPlaceView=(req,res,next)=>{
-  res.render("folder/create")
-}*/
 
+
+//C in CRUD
 exports.createPlaceView=(req,res,next)=>{
   const options=["House", "Apartment", "Other"]
   const img = Places.photo
@@ -28,8 +26,9 @@ exports.placePost = async (req, res) => {
   res.redirect(`/places`)
 }
 
+//R in CRUD
 exports.placesView=async (req,res)=>{
-  const places=await Places.find().sort({createdAt:-1})
+  const places = await Places.find().sort({createdAt:-1})
   res.render("properties/places",{places})
 }
 
@@ -40,6 +39,7 @@ exports.detailPlace=async(req,res)=>{
 }
 
 
+// U in CRUD
 exports.detailPlacePost=async (req,res,next)=>{
  await console.log(req.params.id)
   const { name, rent, tennants, photo,  address, latitude, longitude, placeType } = req.body
@@ -59,6 +59,8 @@ exports.detailPlacePost=async (req,res,next)=>{
   res.redirect("/places");
 }
 
+
+//D in CRUD
 exports.deletePlace= async(req,res,next)=>{
 await Places.findByIdAndDelete(req.params.id);
 res.redirect("/places")
