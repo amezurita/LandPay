@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("../config/passport");
+const uploadCloud = require('../config/cloudinary');
 const Places = require("../models/places");
 
 const {
@@ -70,8 +71,8 @@ router.get(
 router.get("/create", isAuthenticated, createPlaceView);
 
 router.get("/logout", logout);
-router.post("/create", placePost);
-router.get("/places", placesView);
+router.post("/create", uploadCloud.single('photo'), placePost);
+router.get("/places", isAuthenticated, placesView);
 router.get("/places/:id", isAuthenticated, detailPlace);
 router.post("/places/:id", isAuthenticated, detailPlacePost);
 router.get("/delete/:id", isAuthenticated, deletePlace);

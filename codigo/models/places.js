@@ -19,7 +19,7 @@ const placeSchema = new Schema({
         }
       },
 
-      
+      owner: String,
         placeType: {
           type: String,
           enum: ["House", "Apartment", "Other"]

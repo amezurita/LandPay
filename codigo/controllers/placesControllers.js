@@ -10,11 +10,15 @@ exports.createPlaceView=(req,res,next)=>{
 }
 
 exports.placePost = async (req, res) => {
-  const { name, rent, tennants, photo, address, latitude, longitude, placeType } = req.body
+  const photo = req.file.url
+  console.log(req)
+  const owner = req.user._id
+  const { name, rent, tennants, address, latitude, longitude, placeType } = req.body
   const newPlace = {
     name,
     rent,
     tennants,
+    owner,
     photo,
     location: {
       address,
@@ -22,13 +26,15 @@ exports.placePost = async (req, res) => {
     },
     placeType
   }
+  console.log(newPlace)
   const { _id } = await Places.create(newPlace)
   res.redirect(`/places`)
 }
 
 //R in CRUD
 exports.placesView=async (req,res)=>{
-  const places = await Places.find().sort({createdAt:-1})
+  console.log(req)
+  const places = await Places.find({owner: req.user._id}).sort({createdAt:-1})
   res.render("properties/places",{places})
 }
 
