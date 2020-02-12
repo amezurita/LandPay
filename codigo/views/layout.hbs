@@ -1,35 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src='https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.js'></script>
-  <link href='https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css' rel='stylesheet' />
-  <link rel='stylesheet'
-    href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.0/mapbox-gl-geocoder.css'
-    type='text/css' />
-  <link rel="stylesheet" href="/stylesheets/style.css" />
-  <script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
-  <script
-    src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.0/mapbox-gl-geocoder.min.js'></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.0/css/bulma.min.css"
-    integrity="sha256-D9M5yrVDqFlla7nlELDaYZIpXfFWDytQtiV+TaH6F1I=" crossorigin="anonymous" />
-  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LandPay</title>
+    {{!-- MAPBOX --}}
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.0/mapbox-gl-geocoder.css' type='text/css'/>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.0/mapbox-gl-geocoder.min.js'></script>
+    <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!-- Compiled and minified CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+      <link rel="sty,esheet" href="styles.css">
+  </head>
 
-  <title>LandPay</title>
-  <link rel="stylesheet" href="/stylesheets/style.css" />
-
-</head>
-
-<body>
-
-  {{{body}}}
-
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
+  <body>
+    <div class="navbar-fixed">
+      <nav class="deep-orange lighten-2">
+        <div class="nav-wrapper container">
+          <a href="#" class="brand-logo left">LandPlay</a>
+          <ul class="right">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">About</a></li>
+            <li>
+              <a href="#" class="dropdown-trigger" data-target="id_drop">
+                Settings
+                <i class="material-icons left">arrow_drop_down</i>
+              </a>
+              </li>
+          </ul>
+        </div>
+      </nav>
+    </div> 
+  
+    {{{body}}}
+    {{!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> --}}
   <script src="/javascripts/script.js"></script>
-</body>
+  </body>
 
 </html>
