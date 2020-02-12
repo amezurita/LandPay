@@ -1,13 +1,16 @@
 <form action="/login" method="POST">
-<h1>LOGIN</h1>
-<input required type="email" placeholder="email" name="email">
-<input required type="password" placeholder="password" name="password">
+<h1>LOGIN</h1> <br> <br>
+<input required type="email" placeholder="email" name="email"> <br>
+<input required type="password" placeholder="password" name="password"> <br>
 <input type="submit">
 <h2 style="color: red;">{{message}}</h2>
 <br><br>
 
 </form>
 <h2>Or Login by Facebook Here:</h2>
-<button onclick="location.href='/auth/facebook'">LogIn Face</button>
+<button onclick="location.href='/auth/facebook'">Facebook</button>
 <br><br>
+<h2>Or Login by Google Here:</h2>
+ <button onclick="location.href='/auth/google'">Google</button>
+ <br><br>
 <button onclick="location.href='/'">Home</button>

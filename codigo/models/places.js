@@ -5,6 +5,9 @@ const PLM = require("passport-local-mongoose")
 
 const placeSchema = new Schema({
       name: String,
+      rent: Number,
+      tennants: String,
+      photo: String,
       location: {
         address: {
           type: String,
@@ -19,7 +22,7 @@ const placeSchema = new Schema({
       
         placeType: {
           type: String,
-          enum: ["coffee shop", "bookstore"]
+          enum: ["House", "Apartment", "Other"]
         }
       },
       {
