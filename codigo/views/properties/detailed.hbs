@@ -1,46 +1,32 @@
 <section class="form__section">
-
   <div class="card" style="width: 30%; height: auto">
     <div class="card-image" style="width: 100%; height: 360px" id="mapDetail">
     </div>
     <div class="card-content">
       <div class="media">
-
-
-
-<form class="form" action="/places/{{_id}}" method="POST" enctype="multipart/form-data">
-    <input class="input" name="name" type="text" value="{{name}}" />
-    <input type="file" name="photo" value="{{photo}}">
-    <img src="{{photo}}">
-      <select name="placeType" style="width: 100%;">
-        <option value="{{placeType}}">{{placeType}}</option>
-        <option value="House">House</option>
-        <option value="Apartment">Apartment</option>
-        <option value="Other">Other</option>
-        
-      </select>
-    
-    <br>
-    <br>
-    <button class="button" style="background-color: rgb(218, 218, 218);">Update</button>
-    <input type="text" name="address" hidden>
-    <input type="text" name="latitude" hidden>
-    <input type="text" name="longitude" hidden>
-  </form>
-
-        <br>
-        <br>
-       <!-- {{location.address}}-->
-        <br>
-        <br>
-<button onclick="location.href='/delete/{{_id}}'">Delete</button>
+      
+      <form class="form" action="/places/{{_id}}" method="POST" enctype="multipart/form-data">
+        <input class="input" name="name" type="text" value="{{name}}" />
+        <input type="file" name="photo" value="{{photo}}">
+        <img src="{{photo}}">
+        <select name="placeType" style="width: 100%;">
+          <option value="{{placeType}}">{{placeType}}</option>
+          <option value="House">House</option>
+          <option value="Apartment">Apartment</option>
+          <option value="Other">Other</option>
+        </select>
+        <br><br>
+        <button class="button" style="background-color: orange;">Update</button>
+        <input type="text" name="address" hidden>
+        <input type="text" name="latitude" hidden>
+        <input type="text" name="longitude" hidden>
+      </form>
+      <br><br>
+        <!-- {{location.address}}-->
+        <button onclick="location.href='/delete/{{_id}}'">Delete</button>
       </div>
-
-
     </div>
-    
-  </div>
-
+  </div>  
 </section>
 
 
@@ -52,27 +38,26 @@
     style: 'mapbox://styles/mapbox/streets-v11',
     zoom: 15,
     center: [{{ location.coordinates }}]
-  })
+  });
 
-const geoCoder = new MapboxGeocoder({
+  const geoCoder = new MapboxGeocoder({
   accessToken: mapboxgl.accessToken,
   countries: 'mx'
-})
-map.addControl(geoCoder)
+  });
+  map.addControl(geoCoder);
+
+  new mapboxgl.Marker().setLngLat([{{ location.coordinates }}]).addTo(map);
+  document.querySelector('input[placeholder="Search"]').value="{{location.address}}";
+  let address = document.querySelector('input[placeholder="Search"]').value;
 
 
-new mapboxgl.Marker().setLngLat([{{ location.coordinates }}]).addTo(map)
-document.querySelector('input[placeholder="Search"]').value="{{location.address}}"
-let address = document.querySelector('input[placeholder="Search"]').value
-
-
-const { lng, lat } = map.getCenter()
-    const addressInput = document.querySelector('input[name="address"]')
-    const latInput = document.querySelector('input[name="latitude"]')
-    const lngInput = document.querySelector('input[name="longitude"]')
-    latInput.value = lat
-    lngInput.value = lng
-    addressInput.value = address
+  const { lng, lat } = map.getCenter();
+    const addressInput = document.querySelector('input[name="address"]');
+    const latInput = document.querySelector('input[name="latitude"]');
+    const lngInput = document.querySelector('input[name="longitude"]');
+      latInput.value = lat;
+      lngInput.value = lng;
+      addressInput.value = address;
 
 
 map.on('moveend', r => {
@@ -87,13 +72,9 @@ map.on('moveend', r => {
     lngInput.value = lng
     addressInput.value = address
   }
-})
+});
 
 </script>
-
-<br><br>
-
-<button onclick="location.href='/'">Home</button>
 
 
 //Main thing
@@ -103,10 +84,6 @@ map.on('moveend', r => {
 
   <button name="data" type="button" onclick="getData()">Ingresos</button>
 
-</div>
-
-<div>
-  <button name="add" type="button" onclick="">+</button>
 </div>
 
 

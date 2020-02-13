@@ -1,17 +1,32 @@
-<div class="container">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+<div style="margin-top: 10px;" class="container">
   <div class="row">
-    <div class="col s12 teal accent-1" style="height: 80px;">12</div>
+    <div class="col s12" style="height: 80px; background-color: #ABEBC6;">
+    12
+    </div>
   </div>
 </div>
 
 {{!--  --}}
 <div class="container">
   <div class="row">
-    <div class="col s4 light-green accent-2" style="height: 350px;">
-      4
+    <div class="col s5 " style="height: 300px;">
+      <div class="col s12 m7">
+    <h1 style="margin-left: 112px;" class="header">Details</h1>
+    <div class="card horizontal">
+      <div class="card-stacked">
+        <div class="card-content">
+          <p>I am a very simple card. I am good at containing small bits of information.
+          Lorem ipsum dolor sit amet</p>
+        </div>
+      </div>
     </div>
-    <div class="col s8 amber accent-2" style="height: 350px;">
-      8
+  </div>
+    </div>
+
+    <div class="col s7">
+      <canvas id="myChart" width="300px" height="150px"></canvas>
     </div>
   </div>
 </div>
@@ -30,7 +45,7 @@
       <div class="card-image">
         <img src="{{photo}}" alt="">
         <a class="btn-floating halfway-fab waves-effect waves-light red" href="/places/{{_id}}">
-          <i class="material-icons">add</i>
+          <i class="material-icons">edit</i>
         </a> 
       </div>
       <span class="card-title ">{{name}}</span>
@@ -51,4 +66,44 @@
     var elems = document.querySelectorAll('.fixed-action-btn');
     var instances = M.FloatingActionButton.init(elems)
   });
+</script>
+
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ["January" , "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3, 5, 25, 56, 6, 5, 24],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
 </script>
