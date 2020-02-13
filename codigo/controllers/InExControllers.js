@@ -5,13 +5,14 @@ const Place = require("../models/places")
 //C in CRUD
 exports.incomeAdd = async (req, res, next) => {
   const owner = req.user._id
-  const { name, amount, date, category, description } = req.body;
+  const { name, amount, date, place, category, description } = req.body;
   console.log(category);
   const newIncome = {
     name,
     amount,
     date,
     category,
+    place,
     description, 
     owner
   };
@@ -21,12 +22,13 @@ exports.incomeAdd = async (req, res, next) => {
 };
 exports.expenseAdd = async (req, res, next) => {
   const owner = req.user._id
-  const { name, amount, date, category, description } = req.body;
+  const { name, amount, date, category, place, description } = req.body;
   const newExpense = {
     name,
     amount: amount * -1,
     date,
     category,
+    place,
     description, 
     owner
   };
@@ -35,12 +37,14 @@ exports.expenseAdd = async (req, res, next) => {
 };
 
 //R in CRUD
-exports.createIncomeView = (req, res, next) => {
+exports.createIncomeView = async (req, res, next) => {
   const options = ["Rent", "Deposit", "Car Park", "Maintenance", "Other"];
-  res.render("properties/income", { options });
+  const place = await Place.find({owner: req.user._id}, {name: 1, _id: 0}).sort({createdAt:-1})
+  res.render("properties/income", { options, place });
 };
 
-exports.createExpenseView = (req, res, next) => {
+
+exports.createExpenseView = async (req, res, next) => {
   const options = [
     "Reparation",
     "Salary",
@@ -55,30 +59,32 @@ exports.createExpenseView = (req, res, next) => {
     "Accountant",
     "Other"
   ];
-  //const place = [Place.find({owner: req.user._id}).sort({createdAt:-1})]
+  const place = await Place.find({owner: req.user._id}, {name: 1, _id: 0}).sort({createdAt:-1})
   res.render("properties/expense", { options, place });
 };
 
 //U in CRUD
 exports.incomeUpdate = async (req, res) => {
-  const { name, amount, date, category, description } = req.body;
+  const { name, amount, date, category, place,description } = req.body;
   const updateIncome = {
     name,
     amount,
     date,
     category,
+    place,
     description
   };
   await Income.findByIdAndUpdate(req.params.id, updateIncome);
 };
 
 exports.expenseUpdate = async (req, res) => {
-  const { name, amount, date, category, description } = req.body;
+  const { name, amount, date, category, place, description } = req.body;
   const updateExpense = {
     name,
     amount,
     date,
     category,
+    place,
     description
   };
   await Expense.findByIdAndUpdate(req.params.id, updateExpense);
