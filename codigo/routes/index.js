@@ -19,6 +19,18 @@ const {
   detailPlacePost,
   deletePlace
 } = require("../controllers/placesControllers");
+const {
+  incomeAdd,
+  expenseAdd,
+  createIncomeView,
+  createExpenseView,
+  incomeUpdate,
+  expenseUpdate,
+  incomeDelete,
+  expenseDelete
+} = require("../controllers/InExControllers")
+
+
 const { isAuthenticated, checkRole } = require("../middlewares");
 
 
@@ -68,13 +80,22 @@ router.get(
   })
 );
 
+//Property routes 
 router.get("/create", isAuthenticated, createPlaceView);
-
-router.get("/logout", logout);
 router.post("/create", uploadCloud.single('photo'), placePost);
 router.get("/places", isAuthenticated, placesView);
 router.get("/places/:id", isAuthenticated, detailPlace);
 router.post("/places/:id", isAuthenticated, detailPlacePost);
 router.get("/delete/:id", isAuthenticated, deletePlace);
 
+
+//Income/Expense routes
+router.get("/income", isAuthenticated, createIncomeView)
+router.post("/income", isAuthenticated, incomeAdd)
+router.get("/expense", isAuthenticated, createExpenseView)
+router.post("/expense", isAuthenticated, expenseAdd)
+
+
+
+router.get("/logout", logout);
 module.exports = router;

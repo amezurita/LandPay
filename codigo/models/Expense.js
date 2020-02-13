@@ -9,7 +9,7 @@ const expenseSchema = new Schema(
     amount: Number,
     date: String,
     category: {
-      required: true,
+     
       enum: [
        "Reparation",
        "Salary",

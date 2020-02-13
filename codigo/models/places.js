@@ -18,7 +18,9 @@ const placeSchema = new Schema({
           required: true
         }
       },
-
+      balance: Number,
+      income: Number,
+      outcome: Number,
       owner: String,
         placeType: {
           type: String,

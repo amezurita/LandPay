@@ -1,0 +1,21 @@
+<section class="form__section">
+  
+  <h1 class="title">Create new Expense</h1>
+  <form class="form" action="/expense" method="POST">
+    <input class="input" name="name" type="text" placeholder="Expense name" />
+    <input class="input"type="number" name="expense" placeholder="Amount">
+    <input class="input" type="date" name="date" placeholder="dd/mm/yy">
+    <input class="input"type="text" maxlength = "150" name="description" placeholder="Description">
+    
+    <div class="select" style="width: 100%;">
+      <select name="placeType" style="width: 100%;">
+        <option value="">Category</option>
+        {{#each options}}
+        <option value="{{this}}">{{this}}</option>
+        {{/each}}
+      </select>
+    </div>
+        <button type="submit"class="button" onclick="location.href='/places'">Create</button>
+  </form>
+</section>
+<br><br>

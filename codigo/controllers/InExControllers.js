@@ -4,7 +4,7 @@ const Expense = require("../models/Expense");
 
 
 //C in CRUD
-exports.incomeAdd = async (res, req, next) => {
+exports.incomeAdd = async (req, res, next) => {
   const {
     name,
     amount,
@@ -22,8 +22,9 @@ exports.incomeAdd = async (res, req, next) => {
   const {
     _id
   } = await Income.create(newIncome);
+  res.redirect("/places")
 };
-exports.expenseAdd = async (res, req, next) => {
+exports.expenseAdd = async (req, res, next) => {
   const {
     name,
     amount,
@@ -41,14 +42,18 @@ exports.expenseAdd = async (res, req, next) => {
   const {
     _id
   } = await Expense.create(newExpense);
+  res.redirect("/places")
 };
 
 //R in CRUD
-exports.incomeView = (res, req, next) => {
+exports.createIncomeView = (req, res, next) => {
   const options = ["Rent", "Deposit", "Car Park", "Maintenance", "Other"]
+  res.render("properties/income", {options})
+
+  
 };
 
-exports.expenseView = (res, req, next) => {
+exports.createExpenseView = (req, res, next) => {
   const options = [
     "Reparation",
     "Salary",
@@ -63,12 +68,12 @@ exports.expenseView = (res, req, next) => {
     "Accountant",
     "Other"
   ]
-
+  res.render("properties/expense", {options})
 };
 
 
 //U in CRUD
-exports.incomeUpdate = async (res, req) => {
+exports.incomeUpdate = async (req, res) => {
   const {
     name,
     amount,
@@ -86,7 +91,7 @@ exports.incomeUpdate = async (res, req) => {
   await Income.findByIdAndUpdate(req.params.id, updateIncome);
 };
 
-exports.expenseUpdate = async (res, req) => {
+exports.expenseUpdate = async (req, res) => {
   const {
     name,
     amount,
@@ -105,9 +110,9 @@ exports.expenseUpdate = async (res, req) => {
 };
 
 //D in CRUD
-exports.incomeDelete = async (res, req, next) => {
+exports.incomeDelete = async (req, res, next) => {
   await Income.findByIdAndDelete(req.params.id);
 };
-exports.expenseDelete = async (res, req, next) => {
+exports.expenseDelete = async (req, res, next) => {
   await Expense.findByIdAndDelete(req.params.id);
 };

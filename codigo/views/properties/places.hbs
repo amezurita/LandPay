@@ -4,30 +4,55 @@
 <br><br>
 <section class="home__section">
   {{#each places as |place|}}
-  
 
-<div class="card" style="width: 360px; margin: 10px;">
-  <div class="card-content">
-    <p class="title">
-      {{name}}
-    </p>
-    <img src="{{photo}}">
+
+  <div class="card" style="width: 360px; margin: 10px;">
+    <div class="card-content">
+      <p class="title">
+        {{name}}
+      </p>
+      <img src="{{photo}}">
+    </div>
+    <footer class="card-footer">
+      <p class="card-footer-item">
+        <span>
+          <a href="/places/{{_id}}">View More and Update</a>
+        </span>
+      </p>
+    </footer>
   </div>
-  <footer class="card-footer">
-    <p class="card-footer-item">
-      <span>
-        <a href="/places/{{_id}}">View More and Update</a>
-      </span>
-    </p>
-  </footer>
-</div>
-
-
 
   {{/each}}
+
+
+
+
+  <div class="container" style=" border: 2px red solid">
+  <!--COME BACK TO THIS LATER!!!-->
+  <input type="button" onclick="return 1" value="Income" name="inexButton">
+  <input type="button" onclick="return 0" value="Expense" name="inexButton">
+  {{#if inexButton}}
+  {{#each income as |in|}}
+  <h1>{{name}}</h1>
+    <p>{{amount}} <br>
+    {{date}} <br>
+    {{category.enum}} <br>
+    {{description}}</p>
+    <button onclick="location.href='/income'"></button>
+  {{/each}}
+  {{else}}
+  {{#each expense as |ex|}}
+  <h1>{{name}}</h1>
+    <p>{{amount}} <br>
+    {{date}} <br>
+    {{category.enum }} <br>
+    {{description}}</p> {{/each}}
+     <button onclick="location.href='/expense'">+</button>
+  {{/if}}
+
+  </div>
 </section>
 <br><br>
-<button onclick="location.href='/'">Home</button> 
+<button onclick="location.href='/'">Home</button>
 <br><br>
 <button onclick="location.href='/create'">Create New Place</button>
-

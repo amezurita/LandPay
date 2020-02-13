@@ -1,4 +1,6 @@
 const Places = require("../models/places")
+const Income = require("../models/Income");
+const Expense = require("../models/Expense");
 
 
 
@@ -11,7 +13,6 @@ exports.createPlaceView=(req,res,next)=>{
 
 exports.placePost = async (req, res) => {
   const photo = req.file.url
-  console.log(req)
   const owner = req.user._id
   const { name, rent, tennants, address, latitude, longitude, placeType } = req.body
   const newPlace = {
@@ -26,16 +27,17 @@ exports.placePost = async (req, res) => {
     },
     placeType
   }
-  console.log(newPlace)
   const { _id } = await Places.create(newPlace)
   res.redirect(`/places`)
 }
 
 //R in CRUD
-exports.placesView=async (req,res)=>{
+exports.placesView = async (req,res)=>{
   console.log(req)
   const places = await Places.find({owner: req.user._id}).sort({createdAt:-1})
-  res.render("properties/places",{places})
+  const income = await Income.find().sort({createdAt:-1})
+  const expense = await Expense.find().sort({createdAt: -1})
+  res.render("properties/places",{places, income, expense})
 }
 
 exports.detailPlace=async(req,res)=>{
