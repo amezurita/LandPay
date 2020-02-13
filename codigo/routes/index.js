@@ -94,7 +94,6 @@ router.get("/income", isAuthenticated, createIncomeView)
 router.post("/income", isAuthenticated, incomeAdd)
 router.get("/expense", isAuthenticated, createExpenseView)
 router.post("/expense", isAuthenticated, expenseAdd)
-//COME BACK TO THIS!!!
 router.get("/in/delete/:id", isAuthenticated, incomeDelete);
 router.get("/ex/delete/:id", isAuthenticated, expenseDelete);
 
