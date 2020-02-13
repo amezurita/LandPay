@@ -1,34 +1,44 @@
+{{!--  --}}
+<h1 style="text-align: center; font-size:30px; padding-top: 15px;">CREATE HOUSE</h1>
+<br>
+<div class="row container">
+  <form class="col s12" action="/create" method="POST" enctype="multipart/form-data">
+    <div class="row">
+      
+      <div class="input-field col s6">
+        <input class="input" name="name" type="text" placeholder="Property name" />
+      </div>
+      <div class="input-field col s6">
+        <input class="input"type="number" name="rent" placeholder="Rent amount">
+      </div>
+      <div class="input-field col s6">
+        <input class="input"type="text" name="tennants" placeholder="Tennants">
+      </div>
+      <div class="input-field col s6">
+        {{!--  --}}
+        <input class="input"type="text" name="description" placeholder="Description">
+      </div>
+      {{!-- Esto es BULMA creo 😅 --}}
+      <img src="{{photo}}">
+      <input clas="input is-danger container" type="file" name="photo" placeholder="Picture">
+      <div class="select column" style="width: 100%;">
+        <select name="placeType" style="width: 100%;">
+          <option value="">Select type</option>
+          {{#each options}}
+          <option value="{{this}}">{{this}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <br><br>
+      {{!-- aqui acaba bulma --}}
+      <div class="container" id="map" style="width: 1000px; height: 300px;">
 
-
-
-<section class="form__section">
-  
-  <h1 class="title">Create new Property</h1>
-  <form class="form" action="/create" method="POST" enctype="multipart/form-data">
-    <input class="input" name="name" type="text" placeholder="Property name" />
-    <input class="input"type="number" name="rent" placeholder="Rent amount">
-    <input class="input"type="text" name="tennants" placeholder="Tennants">
-    <input class="input"type="text" name="description" placeholder="Description">
-    <img src="{{photo}}">
-    <input clas="input" type="file" name="photo" placeholder="Picture">
-    <div class="select" style="width: 100%;">
-      <select name="placeType" style="width: 100%;">
-        <option value="">Select type</option>
-        {{#each options}}
-        <option value="{{this}}">{{this}}</option>
-        {{/each}}
-      </select>
+      </div>
+      <br>
+      <button style="margin-left: 45%; padding: 0px 50px;" class="waves-effect waves-light btn-large cyan darken-4">Create</button>
+      <input type="text" name="address" hidden>
+      <input type="text" name="latitude" hidden>
+      <input type="text" name="longitude" hidden>
     </div>
-    
-    <div id="map" style="width: 500px; height: 300px;">
-
-    </div>
-    <button class="button">Create</button>
-    <input type="text" name="address" hidden>
-    <input type="text" name="latitude" hidden>
-    <input type="text" name="longitude" hidden>
   </form>
-</section>
-<br><br>
-
-<button onclick="location.href='/'">Home</button>
+</div>
