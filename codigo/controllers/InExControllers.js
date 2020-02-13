@@ -1,56 +1,43 @@
 const Income = require("../models/Income");
 const Expense = require("../models/Expense");
-
-
+const Place = require("../models/places")
 
 //C in CRUD
 exports.incomeAdd = async (req, res, next) => {
-  const {
-    name,
-    amount,
-    date,
-    category,
-    description
-  } = req.body;
+  const owner = req.user._id
+  const { name, amount, date, category, description } = req.body;
+  console.log(category);
   const newIncome = {
     name,
     amount,
     date,
     category,
-    description
+    description, 
+    owner
   };
-  const {
-    _id
-  } = await Income.create(newIncome);
-  res.redirect("/places")
+  const { _id } = await Income.create(newIncome);
+
+  res.redirect("/places");
 };
 exports.expenseAdd = async (req, res, next) => {
-  const {
-    name,
-    amount,
-    date,
-    category,
-    description
-  } = req.body;
+  const owner = req.user._id
+  const { name, amount, date, category, description } = req.body;
   const newExpense = {
     name,
-    amount,
+    amount: amount * -1,
     date,
     category,
-    description
+    description, 
+    owner
   };
-  const {
-    _id
-  } = await Expense.create(newExpense);
-  res.redirect("/places")
+  const { _id } = await Expense.create(newExpense);
+  res.redirect("/places");
 };
 
 //R in CRUD
 exports.createIncomeView = (req, res, next) => {
-  const options = ["Rent", "Deposit", "Car Park", "Maintenance", "Other"]
-  res.render("properties/income", {options})
-
-  
+  const options = ["Rent", "Deposit", "Car Park", "Maintenance", "Other"];
+  res.render("properties/income", { options });
 };
 
 exports.createExpenseView = (req, res, next) => {
@@ -67,20 +54,14 @@ exports.createExpenseView = (req, res, next) => {
     "Legal",
     "Accountant",
     "Other"
-  ]
-  res.render("properties/expense", {options})
+  ];
+  //const place = [Place.find({owner: req.user._id}).sort({createdAt:-1})]
+  res.render("properties/expense", { options, place });
 };
-
 
 //U in CRUD
 exports.incomeUpdate = async (req, res) => {
-  const {
-    name,
-    amount,
-    date,
-    category,
-    description
-  } = req.body;
+  const { name, amount, date, category, description } = req.body;
   const updateIncome = {
     name,
     amount,
@@ -92,13 +73,7 @@ exports.incomeUpdate = async (req, res) => {
 };
 
 exports.expenseUpdate = async (req, res) => {
-  const {
-    name,
-    amount,
-    date,
-    category,
-    description
-  } = req.body;
+  const { name, amount, date, category, description } = req.body;
   const updateExpense = {
     name,
     amount,
@@ -111,8 +86,11 @@ exports.expenseUpdate = async (req, res) => {
 
 //D in CRUD
 exports.incomeDelete = async (req, res, next) => {
+  console.log(req.params, "delete");
   await Income.findByIdAndDelete(req.params.id);
+  res.redirect("/places");
 };
 exports.expenseDelete = async (req, res, next) => {
   await Expense.findByIdAndDelete(req.params.id);
+  res.redirect("/places");
 };

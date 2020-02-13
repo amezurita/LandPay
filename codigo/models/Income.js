@@ -13,8 +13,11 @@ const incomeSchema = new Schema(
     },
     date: String,
     category: {
-      enum: ["Rent", "Deposit", "Car Park", "Maintenance", "Other"]
+      type:String,
+      enum:["Rent", "Deposit", "Car Park", "Maintenance", "Other"]
     },
+  owner: String,
+  place: String,
     description: String
   },
   {

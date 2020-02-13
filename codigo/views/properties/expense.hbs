@@ -3,13 +3,13 @@
   <h1 class="title">Create new Expense</h1>
   <form class="form" action="/expense" method="POST">
     <input class="input" name="name" type="text" placeholder="Expense name" />
-    <input class="input"type="number" name="expense" placeholder="Amount">
+    <input class="input"type="number" name="amount" placeholder="Amount">
     <input class="input" type="date" name="date" placeholder="dd/mm/yy">
     <input class="input"type="text" maxlength = "150" name="description" placeholder="Description">
     
     <div class="select" style="width: 100%;">
-      <select name="placeType" style="width: 100%;">
-        <option value="">Category</option>
+      <select name="category" style="width: 100%;">
+        <option>Category</option>
         {{#each options}}
         <option value="{{this}}">{{this}}</option>
         {{/each}}

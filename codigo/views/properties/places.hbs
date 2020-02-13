@@ -27,31 +27,50 @@
 
 
 
-  <div class="container" style=" border: 2px red solid">
-  <!--COME BACK TO THIS LATER!!!-->
-  <input type="button" onclick="return 1" value="Income" name="inexButton">
-  <input type="button" onclick="return 0" value="Expense" name="inexButton">
-  {{#if inexButton}}
-  {{#each income as |in|}}
-  <h1>{{name}}</h1>
-    <p>{{amount}} <br>
-    {{date}} <br>
-    {{category.enum}} <br>
-    {{description}}</p>
-    <button onclick="location.href='/income'"></button>
-  {{/each}}
-  {{else}}
-  {{#each expense as |ex|}}
-  <h1>{{name}}</h1>
-    <p>{{amount}} <br>
-    {{date}} <br>
-    {{category.enum }} <br>
-    {{description}}</p> {{/each}}
-     <button onclick="location.href='/expense'">+</button>
-  {{/if}}
 
-  </div>
+
+  <div class="container" style=" border: 2px red solid">
+    <!--COME BACK TO THIS LATER!!!-->
+    <input type="button" onclick="changetoIn()" value="Income">
+    <input type="button" onclick="changetoEx()" value="Expense">
+
+    <div id="incomeCount" style="display: block; ">
+      {{#each income as |in|}}
+      <div style="border: 2px royalblue solid; margin: 2px">
+        {{name}} <br>
+        {{amount}} <br>
+        {{date}} <br>
+        {{category}} <br>
+        {{description}}
+        <br><br>
+
+        <button onclick="location.href='/in/delete/{{_id}}'">X</button>
+        <br><br>
+      </div>
+      {{/each}}
+      <button onclick="location.href='/income'">+</button>
+    </div>
+    <div id="expenseCount" style="display: none;">
+      {{#each expense as |ex|}}
+      <div style="border: 2px royalblue solid; margin: 2px">
+        {{name}} <br>
+        {{amount}}<br>
+        {{date}} <br>
+        {{category }} <br>
+        {{description}}
+        <br><br>
+        <button onclick="location.href='/ex/delete/{{_id}}'">X</button>
+        <br> <br>
+      </div>
+      {{/each}}
+      <button onclick="location.href='/expense'">+</button>
+      </div>
 </section>
+<div style="border: purple 2px solid">
+  {{this.incomebal}}
+  {{this.expensebal}}
+
+</div>
 <br><br>
 <button onclick="location.href='/'">Home</button>
 <br><br>

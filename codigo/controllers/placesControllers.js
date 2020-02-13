@@ -33,11 +33,13 @@ exports.placePost = async (req, res) => {
 
 //R in CRUD
 exports.placesView = async (req,res)=>{
-  console.log(req)
   const places = await Places.find({owner: req.user._id}).sort({createdAt:-1})
-  const income = await Income.find().sort({createdAt:-1})
-  const expense = await Expense.find().sort({createdAt: -1})
-  res.render("properties/places",{places, income, expense})
+  const income = await Income.find({owner: req.user._id}).sort({ createdAt:-1})
+  const expense = await Expense.find({owner: req.user._id}).sort({ createdAt: -1})
+  const sumInex = await ((a,b)=>{
+    a + b
+  })
+  res.render("properties/places",{places, income, expense, sumInex})
 }
 
 exports.detailPlace=async(req,res)=>{
@@ -49,7 +51,6 @@ exports.detailPlace=async(req,res)=>{
 
 // U in CRUD
 exports.detailPlacePost=async (req,res,next)=>{
- await console.log(req.params.id)
   const { name, rent, tennants, photo,  address, latitude, longitude, placeType } = req.body
   const updatePlace = {
     name,
@@ -69,29 +70,7 @@ exports.detailPlacePost=async (req,res,next)=>{
 
 
 //D in CRUD
-exports.deletePlace= async(req,res,next)=>{
+exports.deletePlace= async (req,res,next)=>{
 await Places.findByIdAndDelete(req.params.id);
 res.redirect("/places")
 }
-
-/*
-// R in CRUD
-exports.getPlaces = async(req, res) =>{
-  const places = await Places.find().populate("places")
-  res.render("folder/places", { places })
-}
-
-
-exports.createPlace = async (req, res) =>{ 
-  const {name, location} =req.body;
-  await Places.create ({
-    name,
-    location
-  })
-  res.redirect("/")
-}
-
-exports.updatePlacesView = async (req, res) => {
-  const Places = await Places.find.ById(req.params.placesid)
-  res.render("update-places")
-}*/

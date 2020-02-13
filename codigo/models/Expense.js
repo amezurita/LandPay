@@ -9,7 +9,7 @@ const expenseSchema = new Schema(
     amount: Number,
     date: String,
     category: {
-     
+     type: String,
       enum: [
        "Reparation",
        "Salary",
@@ -25,6 +25,8 @@ const expenseSchema = new Schema(
        "Other"
     ]
     },
+    owner: String,
+    place: String,
     description: String
   },
   {
