@@ -1,4 +1,6 @@
 const Places = require("../models/places")
+const Income = require("../models/Income");
+const Expense = require("../models/Expense");
 
 
 
@@ -11,7 +13,6 @@ exports.createPlaceView=(req,res,next)=>{
 
 exports.placePost = async (req, res) => {
   const photo = req.file.url
-  console.log(req)
   const owner = req.user._id
   const { name, rent, tennants, address, latitude, longitude, placeType } = req.body
   const newPlace = {
@@ -26,16 +27,19 @@ exports.placePost = async (req, res) => {
     },
     placeType
   }
-  console.log(newPlace)
   const { _id } = await Places.create(newPlace)
   res.redirect(`/places`)
 }
 
 //R in CRUD
-exports.placesView=async (req,res)=>{
-  console.log(req)
+exports.placesView = async (req,res)=>{
   const places = await Places.find({owner: req.user._id}).sort({createdAt:-1})
-  res.render("properties/places",{places})
+  const income = await Income.find({owner: req.user._id}).sort({ createdAt:-1})
+  const expense = await Expense.find({owner: req.user._id}).sort({ createdAt: -1})
+  const sumInex = await ((a,b)=>{
+    a + b
+  })
+  res.render("properties/places",{places, income, expense, sumInex})
 }
 
 exports.detailPlace=async(req,res)=>{
@@ -47,7 +51,6 @@ exports.detailPlace=async(req,res)=>{
 
 // U in CRUD
 exports.detailPlacePost=async (req,res,next)=>{
- await console.log(req.params.id)
   const { name, rent, tennants, photo,  address, latitude, longitude, placeType } = req.body
   const updatePlace = {
     name,
@@ -67,29 +70,7 @@ exports.detailPlacePost=async (req,res,next)=>{
 
 
 //D in CRUD
-exports.deletePlace= async(req,res,next)=>{
+exports.deletePlace= async (req,res,next)=>{
 await Places.findByIdAndDelete(req.params.id);
 res.redirect("/places")
 }
-
-/*
-// R in CRUD
-exports.getPlaces = async(req, res) =>{
-  const places = await Places.find().populate("places")
-  res.render("folder/places", { places })
-}
-
-
-exports.createPlace = async (req, res) =>{ 
-  const {name, location} =req.body;
-  await Places.create ({
-    name,
-    location
-  })
-  res.redirect("/")
-}
-
-exports.updatePlacesView = async (req, res) => {
-  const Places = await Places.find.ById(req.params.placesid)
-  res.render("update-places")
-}*/

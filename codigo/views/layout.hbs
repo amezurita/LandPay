@@ -26,7 +26,17 @@
 <body>
 
   {{{body}}}
+<script type="text/javascript">
+function changetoEx() {
+     document.getElementById('incomeCount').style.display='none'
+      document.getElementById('expenseCount').style.display='block'
+}
+function changetoIn() {
+       document.getElementById('incomeCount').style.display='block'
+      document.getElementById('expenseCount').style.display='none'
+}
 
+</script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
   <script src="/javascripts/script.js"></script>
