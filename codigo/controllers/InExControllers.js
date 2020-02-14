@@ -6,7 +6,6 @@ const Place = require("../models/places")
 exports.incomeAdd = async (req, res, next) => {
   const owner = req.user._id
   const { name, amount, date, place, category, description } = req.body;
-  console.log(category);
   const newIncome = {
     name,
     amount,
@@ -92,7 +91,6 @@ exports.expenseUpdate = async (req, res) => {
 
 //D in CRUD
 exports.incomeDelete = async (req, res, next) => {
-  console.log(req.params, "delete");
   await Income.findByIdAndDelete(req.params.id);
   res.redirect("/places");
 };

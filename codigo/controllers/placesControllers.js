@@ -36,10 +36,12 @@ exports.placesView = async (req,res)=>{
   const places = await Places.find({owner: req.user._id}).sort({createdAt:-1})
   const income = await Income.find({owner: req.user._id}).sort({ createdAt:-1})
   const expense = await Expense.find({owner: req.user._id}).sort({ createdAt: -1})
-  const sumInex = await ((a,b)=>{
-    a + b
-  })
-  res.render("properties/places",{places, income, expense, sumInex})
+  let sumInex = [...income, ...expense].reduce((sum, movement) => {
+    return sum += movement.amount
+  }, 0)
+  sumInex = sumInex.toString()
+  const obj = {places, income, expense, sumInex}
+  res.render("properties/places", obj)
 }
 
 exports.detailPlace=async(req,res)=>{
