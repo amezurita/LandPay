@@ -47,8 +47,8 @@ exports.detailPlace=async(req,res)=>{
 
 // U in CRUD
 exports.detailPlacePost=async (req,res,next)=>{
- await console.log(req.params.id)
-  const { name, rent, tennants, photo,  address, latitude, longitude, placeType } = req.body
+  const photo = req.file.url
+  const { name, rent, tennants,  address, latitude, longitude, placeType } = req.body
   const updatePlace = {
     name,
     rent,

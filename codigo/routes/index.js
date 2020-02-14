@@ -74,7 +74,7 @@ router.get("/logout", logout);
 router.post("/create", uploadCloud.single('photo'), placePost);
 router.get("/places", isAuthenticated, placesView);
 router.get("/places/:id", isAuthenticated, detailPlace);
-router.post("/places/:id", isAuthenticated, detailPlacePost);
+router.post("/places/:id", isAuthenticated, uploadCloud.single('photo'), detailPlacePost);
 router.get("/delete/:id", isAuthenticated, deletePlace);
 
 module.exports = router;

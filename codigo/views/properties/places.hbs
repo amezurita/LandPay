@@ -1,14 +1,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-
-<div style="margin-top: 10px;" class="container">
-  <div class="row">
-    <div class="col s12" style="height: 80px; background-color: #ABEBC6;">
-    12
-    </div>
-  </div>
-</div>
-
-{{!--  --}}
+<br>
+<br>
+<br>
 <div class="container">
   <div class="row">
     <div class="col s5 " style="height: 300px;">
@@ -73,10 +66,10 @@ var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: ["January" , "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        labels: ["January", "August", "September", "October", "November", "December"].reverse(),
         datasets: [{
             label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3, 5, 25, 56, 6, 5, 24],
+            data: [12, 19, 3, 5, 2, 3,],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',

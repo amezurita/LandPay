@@ -1,11 +1,11 @@
-<section class="form__section">
+<section class="container">
   <div class="card" style="width: 30%; height: auto">
-    <div class="card-image" style="width: 100%; height: 360px" id="mapDetail">
+    <div class="card-image" style="width: 1300px; height: 360px" id="mapDetail">
     </div>
     <div class="card-content">
       <div class="media">
       
-      <form class="form" action="/places/{{_id}}" method="POST" enctype="multipart/form-data">
+      <form class="form container" action="/places/{{_id}}" method="POST" enctype="multipart/form-data">
         <input class="input" name="name" type="text" value="{{name}}" />
         <input type="file" name="photo" value="{{photo}}">
         <img src="{{photo}}">
@@ -16,16 +16,16 @@
           <option value="Other">Other</option>
         </select>
         <br><br>
-        <button class="button" style="background-color: orange;">Update</button>
+        <button class="button deep-orange lighten-2">Update</button>
         <input type="text" name="address" hidden>
         <input type="text" name="latitude" hidden>
         <input type="text" name="longitude" hidden>
       </form>
       <br><br>
         <!-- {{location.address}}-->
-        <button onclick="location.href='/delete/{{_id}}'">Delete</button>
       </div>
     </div>
+        <button style="margin-left: 25px;" class="button deep-orange lighten-2" onclick="location.href='/delete/{{_id}}'">Delete</button>
   </div>  
 </section>
 
@@ -75,15 +75,5 @@ map.on('moveend', r => {
 });
 
 </script>
-
-
-//Main thing
-
-<div id="Finances">
-  <button name="data" type="button" onclick="getData()">Gastos</button>
-
-  <button name="data" type="button" onclick="getData()">Ingresos</button>
-
-</div>
 
 
