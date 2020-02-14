@@ -53,12 +53,8 @@ exports.detailPlace=async(req,res)=>{
 
 // U in CRUD
 exports.detailPlacePost=async (req,res,next)=>{
-<<<<<<< HEAD
   const photo = req.file.url
   const { name, rent, tennants,  address, latitude, longitude, placeType } = req.body
-=======
-  const { name, rent, tennants, photo,  address, latitude, longitude, placeType } = req.body
->>>>>>> acaf64e00d2ccbf20dd85fe079802dcc54cc26d3
   const updatePlace = {
     name,
     rent,

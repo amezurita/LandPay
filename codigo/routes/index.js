@@ -4,6 +4,7 @@ const passport = require("../config/passport");
 const uploadCloud = require('../config/cloudinary');
 const Places = require("../models/places");
 
+
 const {
   signup,
   signUpView,
@@ -31,25 +32,29 @@ const {
 } = require("../controllers/InExControllers")
 
 
-const { isAuthenticated, checkRole } = require("../middlewares");
+const { isAuthenticated, checkRole, isLogged } = require("../middlewares");
 
 
 /* GET home page */
 router.get("/", (req, res, next) => {
   res.render("index");
 });
+
+//auth routes
 router.get("/signup", signUpView);
 router.post("/signup", signup);
-router.get("/login", loginView);
+router.get("/", isLogged, loginView);
 router.post(
   "/login",
   passport.authenticate("local", {
-    successRedirect: "/places",
-    failureRedirect: "/login",
+    successRedirect: "/",
+    failureRedirect: "/",
     failureFlash: true,
     failureMessage: "The input data is incorrect"
   })
-);
+
+)
+;
 
 //Facebook Login
 router.get("/auth/facebook", passport.authenticate("facebook"));

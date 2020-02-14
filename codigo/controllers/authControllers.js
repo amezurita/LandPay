@@ -22,8 +22,7 @@ exports.signup = async (req, res, next) => {
 };
 
 exports.loginView = (req, res, next) => {
-  res.render("auth/login");
-  console.log(User);
+  res.render("/login");
 };
 
 exports.logout = (req, res, next) => {

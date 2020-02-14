@@ -1,15 +1,13 @@
- {{!--  --}}
-<div class="section">
+{{!--  --}}
+<div class="section container">
   <div class="row">
     <div class="col s12">
       <div class="slider">
         <ul class="slides">
           <li>
             <img src="/images/jan-jakub-nanista-UHyrjKPsshk-unsplash.jpg" alt="">
-            <div class="caption center-align">
-            </div>
           </li>
-           <li>
+          <li>
             <img src="/images/francesca-saraco-_dS27XGgRyQ-unsplash.jpg" alt="">
               <div class="caption center-align">
               </div>
@@ -28,25 +26,27 @@
         </div>
       </div>
     </div>
+  </div>
 </div>
- 
+
 {{!--  --}}
 <div class="section container">
-  <div class="row" >
+  <div class="row">
     <form action="/login" class="col s6" method="POST">
       <div class="row card-panel">
         <div class="input-field col s12">
           <input required type="email" placeholder="@email" name="email" class="validate">
           <label for="nombre">Email</label>
-        </div>  
+        </div>
         <div class="input-field col s12">
-          <input type="password" placeholder="password" id="nombre" class="validate" required>
+          <input type="password" placeholder="password" name="password" class="validate" required>
           <label for="nombre">Password</label>
         </div>
-        <button class="btn deep-orange lighten-2" type="submit" onclick="location.href='/login'">LOGIN</button>
+        <button class="btn deep-orange lighten-2" type="submit">LOGIN</button>
+        <h2 style="color: red;">{{message}}</h2>
       </div>
     </form>
-    
+
     <form action="" class="col s6">
       <div class="row card-panel">
         <div class="input-field col s12">
@@ -73,17 +73,25 @@
         <button class="btn deep-orange lighten-2" type="submit" onclick="location.href='/signup'">SIGNIN</button>
       </div>
     </form>
+    <!--Social Login-->
+    
+    <h2>Or Login by Facebook Here:</h2>
+    <button onclick="location.href='/auth/facebook'">Facebook</button>
+    <br><br>
+    <h2>Or Login by Google Here:</h2>
+    <button onclick="location.href='/auth/google'">Google</button>
+    <br><br>
   </div>
 </div>
-      <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('.slider');
-      var instances = M.Slider.init(elems, {
-        indicators: false,
-        height: 500,
-        interval: 3000
-      });
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.slider');
+    var instances = M.Slider.init(elems, {
+      indicators: false,
+      height: 500,
+      interval: 3000
     });
-  </script>
+  });
+</script>
