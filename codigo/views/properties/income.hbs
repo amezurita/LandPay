@@ -1,0 +1,35 @@
+
+
+
+<section class="form__section">
+  
+  <h1 class="title">Create new Income</h1>
+  <form class="form" action="/income" method="POST">
+    <input class="input" name="name" type="text" placeholder="Income name" />
+    <input class="input"type="number" name="amount" placeholder="Amount">
+    <input class="input" type="date" name="date" placeholder="dd/mm/yy">
+    <input class="input"type="text" maxlength = "150" name="description" placeholder="Description">
+    
+    <div class="select" style="width: 100%;">
+      <select name="category" style="width: 100%;">
+        <option value="">Category</option>
+        {{#each options}}
+        <option value="{{this}}">{{this}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="select" style="width: 100%;">
+      <select name="place" style="width: 100%;">
+        <option>Property</option>
+        {{#each place}}
+        <option value="{{this}}">{{this.name}}</option>
+        {{/each}}
+      </select>
+    </div>
+     <button type="submit" class="button">Create</button>
+  </form>
+<br><br>
+</section>
+
+
+<button onclick="location.href='/'">Home</button>

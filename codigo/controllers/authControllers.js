@@ -11,7 +11,8 @@ exports.signup = async (req, res, next) => {
     res.render("auth/signup", { message: "this user is already registred" });
   } else {
     try {
-      let newUser = new User({ email: email, name: name, photo: photo });
+      const balance = req.places ? req.places.balance : 0
+      let newUser = new User({ email: email, name: name, photo: photo, balance: balance});
       const result = await User.register(newUser, password);
       res.redirect("/login");
     } catch (err) {

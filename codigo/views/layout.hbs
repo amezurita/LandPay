@@ -26,10 +26,14 @@
     <div class="navbar-fixed">
       <nav class="deep-orange lighten-2">
         <div class="nav-wrapper container">
+<<<<<<< HEAD
           <a href="#" class="brand-logo left">LandPay</a>
+=======
+          <a href="#" class="brand-logo left" onclick="location.href='/'">LandPlay</a>
+>>>>>>> acaf64e00d2ccbf20dd85fe079802dcc54cc26d3
           <ul class="right">
             <li><a onclick="location.href='/'">Home</a></li>
-            <li><a href="#">Profile</a></li>
+            <li><a onclick="location.href='/places'">Profile</a></li>
             <li><a href="#">About</a></li>
             <li>
               <a href="#" class="dropdown-trigger" data-target="id_drop">
@@ -43,7 +47,18 @@
     </div> 
   
     {{{body}}}
-    {{!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> --}}
+    <script type="text/javascript">
+function changetoEx() {
+     document.getElementById('incomeCount').style.display='none'
+      document.getElementById('expenseCount').style.display='block'
+}
+function changetoIn() {
+       document.getElementById('incomeCount').style.display='block'
+      document.getElementById('expenseCount').style.display='none'
+}
+
+</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="/javascripts/script.js"></script>
   </body>
 

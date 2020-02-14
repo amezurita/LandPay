@@ -10,9 +10,8 @@ const userSchema = new Schema({
   photo: String,
   facebookID: String,
   googleID: String,
-  monthyIn: Number,
-  monthlyOut: Number,
-  places: [Schema.Types.ObjectId]
+  places: [Schema.Types.ObjectId],
+  balance: Number
 });
 userSchema.plugin(PLM, { usernameField: "email" });
 const User = mongoose.model("User", userSchema);
