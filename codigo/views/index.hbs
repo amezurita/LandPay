@@ -1,4 +1,4 @@
- {{!--  --}}
+{{!--  --}}
 <div class="container section">
   <div class="row">
     <div class="col s12">
@@ -8,53 +8,62 @@
             <img src="/images/jan-jakub-nanista-UHyrjKPsshk-unsplash.jpg" alt="">
             <div class="caption center-align">
               <h3>Hello</h3>
-              <h5 class="light">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias labore molestias, sint corporis dolores amet eos non. Minima, fugiat blanditiis nihil quod repudiandae suscipit, molestias nobis iusto impedit, doloremque consequatur!</h5>
+              <h5 class="light">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias labore molestias, sint
+                corporis dolores amet eos non. Minima, fugiat blanditiis nihil quod repudiandae suscipit, molestias
+                nobis iusto impedit, doloremque consequatur!</h5>
             </div>
           </li>
-           <li>
+          <li>
             <img src="/images/francesca-saraco-_dS27XGgRyQ-unsplash.jpg" alt="">
-              <div class="caption center-align">
-                <h3>kjfd</h3>
-                <h5 class="light">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias labore molestias, sint corporis dolores amet eos non. Minima, fugiat blanditiis nihil quod repudiandae suscipit, molestias nobis iusto impedit, doloremque consequatur!</h5>
-              </div>
-            </li>
-            <li>
-              <img src="/images/joel-filipe-RFDP7_80v5A-unsplash.jpg" alt="">
-              <div class="caption center-align">
-                <h3>12345</h3>
-                <h5 class="light">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias labore molestias, sint corporis dolores amet eos non. Minima, fugiat blanditiis nihil quod repudiandae suscipit, molestias nobis iusto impedit, doloremque consequatur!</h5>
-              </div>
-            </li>
-            <li>
-              <img src="/images/etienne-beauregard-riverin-B0aCvAVSX8E-unsplash.jpg" alt="">
-                <div class="caption center-align">
-                  <h3>Hello</h3>
-                  <h5 class="light">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias labore molestias, sint corporis dolores amet eos non. Minima, fugiat blanditiis nihil quod repudiandae suscipit, molestias nobis iusto impedit, doloremque consequatur!</h5>
-                </div>
-            </li>
-          </ul>
-        </div>
+            <div class="caption center-align">
+              <h3>kjfd</h3>
+              <h5 class="light">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias labore molestias, sint
+                corporis dolores amet eos non. Minima, fugiat blanditiis nihil quod repudiandae suscipit, molestias
+                nobis iusto impedit, doloremque consequatur!</h5>
+            </div>
+          </li>
+          <li>
+            <img src="/images/joel-filipe-RFDP7_80v5A-unsplash.jpg" alt="">
+            <div class="caption center-align">
+              <h3>12345</h3>
+              <h5 class="light">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias labore molestias, sint
+                corporis dolores amet eos non. Minima, fugiat blanditiis nihil quod repudiandae suscipit, molestias
+                nobis iusto impedit, doloremque consequatur!</h5>
+            </div>
+          </li>
+          <li>
+            <img src="/images/etienne-beauregard-riverin-B0aCvAVSX8E-unsplash.jpg" alt="">
+            <div class="caption center-align">
+              <h3>Hello</h3>
+              <h5 class="light">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias labore molestias, sint
+                corporis dolores amet eos non. Minima, fugiat blanditiis nihil quod repudiandae suscipit, molestias
+                nobis iusto impedit, doloremque consequatur!</h5>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
+  </div>
 </div>
- 
+
 {{!--  --}}
 <div class="section container">
-  <div class="row" >
+  <div class="row">
     <form action="/login" class="col s6" method="POST">
       <div class="row card-panel">
         <div class="input-field col s12">
           <input required type="email" placeholder="@email" name="email" class="validate">
           <label for="nombre">Email</label>
-        </div>  
+        </div>
         <div class="input-field col s12">
-          <input type="password" placeholder="password" id="nombre" class="validate" required>
+          <input type="password" placeholder="password" name="password" class="validate" required>
           <label for="nombre">Password</label>
         </div>
-        <button class="btn deep-orange lighten-2" type="submit" onclick="location.href='/login'">LOGIN</button>
+        <button class="btn deep-orange lighten-2" type="submit">LOGIN</button>
+        <h2 style="color: red;">{{message}}</h2>
       </div>
     </form>
-    
+
     <form action="" class="col s6">
       <div class="row card-panel">
         <div class="input-field col s12">
@@ -81,17 +90,25 @@
         <button class="btn deep-orange lighten-2" type="submit" onclick="location.href='/signup'">SIGNIN</button>
       </div>
     </form>
+    <!--Social Login-->
+    
+    <h2>Or Login by Facebook Here:</h2>
+    <button onclick="location.href='/auth/facebook'">Facebook</button>
+    <br><br>
+    <h2>Or Login by Google Here:</h2>
+    <button onclick="location.href='/auth/google'">Google</button>
+    <br><br>
   </div>
 </div>
-      <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('.slider');
-      var instances = M.Slider.init(elems, {
-        indicators: false,
-        height: 500,
-        interval: 3000
-      });
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.slider');
+    var instances = M.Slider.init(elems, {
+      indicators: false,
+      height: 500,
+      interval: 3000
     });
-  </script>
+  });
+</script>

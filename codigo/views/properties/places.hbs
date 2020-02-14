@@ -87,11 +87,11 @@
         {{place}}
         <br><br>
 
-        <button onclick="location.href='/in/delete/{{_id}}'">X</button>
+        <button class="btn" onclick="location.href='/in/delete/{{_id}}'">Delete</button>
         <br><br>
       </div>
       {{/each}}
-      <button onclick="location.href='/income'">+</button>
+      <button class="btn" onclick="location.href='/income'">Add</button>
     </div>
     <div id="expenseCount" style="display: none;">
       {{#each expense as |ex|}}
